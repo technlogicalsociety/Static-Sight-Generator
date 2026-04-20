@@ -10,10 +10,10 @@ def main():
     else:
         basepath = "/"
 
-    if os.path.exists("./public"):
-        shutil.rmtree("./public")
-    static_copy("./static", "./public")
-    generate_pages_recursive("./content", "./template.html", "./public")
+    if os.path.exists("./docs"):
+        shutil.rmtree("./docs")
+    static_copy("./static", "./docs")
+    generate_pages_recursive("./content", "./template.html", "./docs", basepath)
 
 #def generate_pages_recursive(content_dir, template_path, dest_dir):
 #    for each_entry in os.listdir(content_dir):

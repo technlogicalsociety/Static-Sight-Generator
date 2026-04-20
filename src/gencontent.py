@@ -36,13 +36,13 @@ def generate_page(from_path, template_path, dest_path, basepath):
     file.write(template)
     file.close()
 
-def generate_pages_recursive(dir_path, template_path, dest_dir):
+def generate_pages_recursive(dir_path, template_path, dest_dir, basepath):
     for each_entry in os.listdir(dir_path):
         from_path = os.path.join(dir_path, each_entry)
         dest_path = os.path.join(dest_dir, each_entry)
 
         if os.path.isfile(from_path):
             dest_path = Path(dest_path).with_suffix(".html")
-            generate_page(from_path, template_path, dest_path)
+            generate_page(from_path, template_path, dest_path, basepath)
         else:
             generate_pages_recursive(from_path, template_path, dest_path, basepath)
